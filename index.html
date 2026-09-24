@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EC Group – Services Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#FA3547;--red-deep:#D9223A;--red-soft:#FFE8EA;
+  --ink:#16181D;--ink-2:#4A4F5A;--line:#E4E6EA;--paper:#FFFFFF;--wash:#F5F6F8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F2F3F5;--ink-2:#B4B9C3;--line:#2E323A;--paper:#1A1C21;--wash:#22252B;--red-soft:#3A1E23;--red-deep:#FF6B7A}}
+:root[data-theme="dark"]{--ink:#F2F3F5;--ink-2:#B4B9C3;--line:#2E323A;--paper:#1A1C21;--wash:#22252B;--red-soft:#3A1E23;--red-deep:#FF6B7A}
+html{scroll-padding-top:calc(16px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--display);margin:0}
+h2{font-stretch:115%;font-weight:800;font-size:clamp(26px,3.2vw,36px);letter-spacing:-.02em;line-height:1.08;margin-bottom:8px}
+.lede{color:var(--ink-2);max-width:62ch;margin:0 0 32px;font-size:17px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--wash)}
+
+header.top{padding:28px 0 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:40px;height:40px;display:block}
+.brand strong{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:19px}
+
+.hero{padding:64px 0 72px;border-top:0}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end}
+.hero h1{font-stretch:120%;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.025em;margin-bottom:20px}
+.hero p{font-size:18px;color:var(--ink-2);max-width:54ch;margin:0}
+.facts{border-left:6px solid var(--red);padding-left:22px;display:grid;gap:14px}
+.facts div b{display:block;font-family:var(--display);font-stretch:122%;font-weight:800;font-size:clamp(34px,4vw,48px);line-height:1;color:var(--red)}
+.facts div span{font-size:14.5px;color:var(--ink-2)}
+
+/* Order journey */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:step}
+.step{position:relative;padding:22px 20px 22px 0}
+.step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--red);color:#fff;font-family:var(--display);font-weight:800;font-size:17px;margin-bottom:14px;position:relative;z-index:1}
+.step::after{content:"";position:absolute;top:41px;left:38px;right:0;height:2px;background:var(--red);opacity:.35}
+.step:last-child::after{display:none}
+.step h3{font-stretch:110%;font-size:18px;margin-bottom:4px}
+.step p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:26ch}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:28px 26px 24px;display:flex;flex-direction:column}
+.svc .kind{font-size:13px;font-weight:600;color:var(--red-deep);margin-bottom:6px}
+.svc h3{font-stretch:112%;font-size:21px;line-height:1.15;margin-bottom:10px}
+.svc p{margin:0 0 14px;color:var(--ink-2);font-size:15px}
+.svc ul{margin:0 0 18px;padding:0;list-style:none;font-size:14.5px}
+.svc li{padding:5px 0 5px 18px;position:relative;border-top:1px solid var(--line)}
+.svc li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:2px;background:var(--red)}
+.svc a{margin-top:auto;font-weight:600;font-size:14.5px;color:var(--red-deep);text-decoration:none}
+.svc a:hover{text-decoration:underline}
+.svc:last-child{grid-column:1/-1}
+@media (min-width:1000px){.extras{grid-template-columns:repeat(5,1fr)}}
+
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.extra{border-top:3px solid var(--ink);padding-top:14px}
+.extra h3{font-stretch:108%;font-size:17px;margin-bottom:4px}
+.extra p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+.sectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sector{background:var(--paper);padding:26px 24px}
+.sector h3{font-stretch:112%;font-size:20px;margin-bottom:6px}
+.sector p{margin:0 0 12px;color:var(--ink-2);font-size:15px}
+.sector .who{font-size:13.5px;color:var(--ink)}
+.sector .who b{font-weight:600}
+
+.plat{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.plat span{border:1px solid var(--line);background:var(--paper);padding:10px 16px;font-family:var(--display);font-stretch:108%;font-weight:600;font-size:15px}
+
+.cta{background:var(--red);color:#fff;padding:56px 0;border:0}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta h2{color:#fff;margin:0}
+.cta p{margin:6px 0 0;opacity:.9}
+.cta .btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;font-weight:600;text-decoration:none;background:#fff;color:#16181D}
+.btn.line{background:transparent;color:#fff;border:1.5px solid #fff}
+footer{padding:24px 0 110px;font-size:13.5px;color:var(--ink-2)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .journey{grid-template-columns:1fr 1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .step:nth-child(2)::after{display:none}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px}
+  section{padding:56px 0}
+  .hero{padding:44px 0 56px}
+  .journey{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .step::after{display:none}
+  .step{padding-right:0}
+}
+
+.flash{animation:flash 2.2s ease-out}
+@keyframes flash{0%,70%{box-shadow:inset 0 0 0 4px var(--red)}100%{box-shadow:inset 0 0 0 0 transparent}}
+.bot{--bot:#F1F2F4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bot{--bot:#2A2E35}}
+:root[data-theme="dark"] .bot{--bot:#2A2E35}
+.launcher{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;background:var(--red);color:#fff;border:0;padding:14px 20px 14px 16px;cursor:pointer;font:600 15px var(--body);box-shadow:0 10px 30px -8px rgba(250,53,71,.6)}
+.launcher svg{width:22px;height:22px}
+.launcher[hidden],.nudge[hidden],.chat[hidden]{display:none}
+.nudge{position:fixed;right:24px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--paper);border:1px solid var(--line);padding:12px 36px 12px 14px;font-size:14px;max-width:270px;box-shadow:0 14px 34px -14px rgba(22,24,29,.4);animation:pop .3s ease-out;cursor:pointer}
+.nudge button{position:absolute;top:6px;right:6px;background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:16px;line-height:1;padding:4px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chat{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:40;width:400px;height:min(640px,calc(100% - 48px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)));background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;box-shadow:0 24px 60px -20px rgba(22,24,29,.5);transform-origin:bottom right;animation:open .22s ease-out}
+@keyframes open{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 10px 14px 16px;border-bottom:3px solid var(--red)}
+.chat-head img{width:36px;height:36px}
+.chat-head div{flex:1;min-width:0}
+.chat-head strong{display:block;font-family:var(--display);font-stretch:110%;font-size:16px;line-height:1.2}
+.chat-head small{color:var(--ink-2);font-size:12.5px;display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#1FAE62;display:inline-block;flex:none}
+.icon-btn{background:none;border:0;padding:8px;cursor:pointer;color:var(--ink-2);line-height:0}
+.icon-btn:hover{color:var(--ink)}
+.icon-btn svg{width:18px;height:18px}
+.msgs{flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:10px 13px;font-size:14.5px;line-height:1.5;overflow-wrap:anywhere}
+.msg.b{background:var(--bot);align-self:flex-start;border-radius:2px 14px 14px 14px}
+.msg.u{background:var(--red);color:#fff;align-self:flex-end;border-radius:14px 2px 14px 14px}
+.msg ul{margin:6px 0;padding-left:18px}
+.msg p{margin:0 0 6px}.msg p:last-child{margin:0}
+.msg.thinking{color:var(--ink-2);font-style:italic}
+.action{align-self:flex-start;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2)}
+.action::before{content:"";width:14px;height:2px;background:var(--red)}
+.cards{align-self:stretch;display:flex;flex-direction:column;gap:6px}
+.card{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-left:3px solid var(--red);padding:10px 12px;text-decoration:none;background:var(--paper)}
+.card:hover{border-color:var(--red)}
+.card strong{display:block;font-size:14px}
+.card small{display:block;color:var(--ink-2);font-size:12.5px}
+.card svg{flex:none;width:16px;height:16px;color:var(--red-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:4px 16px 10px}
+.chip{background:var(--paper);border:1px solid var(--line);padding:6px 11px;font-size:13px;cursor:pointer;border-radius:999px;color:var(--ink)}
+.chip:hover{border-color:var(--red);color:var(--red-deep)}
+.compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.compose textarea{flex:1;resize:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:10px 12px;font:14.5px/1.4 var(--body);height:44px;max-height:120px}
+.compose textarea:focus{outline:none;border-color:var(--red)}
+.send{background:var(--red);color:#fff;border:0;padding:0 16px;font:600 14.5px var(--body);cursor:pointer;min-width:72px}
+.send:disabled{opacity:.5;cursor:default}
+.cfoot{font-size:11.5px;color:var(--ink-2);text-align:center;padding:0 12px 10px}
+.sr{position:absolute;left:-9999px}
+@media (max-width:560px){
+  .chat{right:0;bottom:0;width:100%;height:100%;border:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .launcher,.nudge{right:16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="https://ecgroup.co.uk/" target="_blank" rel="noopener"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAIAAAC1eHXNAAAC/0lEQVR4nO2XXUgUURTHz72jT1mUnxBum0tFRBgoWUnmgwa2QWGwL+G+JJIRUkT6oIFaoA9aDwW9WBRhECwRbGBoEmaRUmm0hpmuq6IUix+JWi/u3NODSzV37s7e2ZbwYf7My5w558xvZv6ce4cgIkgIB3zqnXYuqLhdJH9/xJLJaXb7Hi6vyPQn8hyhczW/T2lFmVJRJlPIOrrZAw8GpowgcrOpTC9OSnOdJAQAUGex0lRLHPYoaTFA0KICUyXEYY+KYo5DqSo3C/EH5dJZg4QEfUht4/0Y7rVvD3W79HEcGWPeLvzix6HPxLaVZG2jp0+RnGy+PC+Huk4wj1fcXO/T1bwSYarS2kCPHOQh+t6Hrt2AuQUuLjQyBmdD7vOwuMRDyPuUbLcJIAZ9oQtX9BAAwNra9e+VZKTRwnxhf1kOevyoPhjpC4ZR7j/Cb0G+T+EhYbLgu+CgT5Bnt0HKFg6CGXIAAMnlXQIAEJzDma9cmsCneouJNTYRNQUHBI8kVCxzLHwPfyDm2rhyzH9fFxxkpyOOHAJ/iH26LRNSk7UcWegbjheH7BzTzyX8NBI6c9G4u9JYTTLSNFXBWbW+hYeQn2PsSQdfvHe3UmfEQZ3F9FgRycn++2CdPeJkSQ6YW8DXb/nikyWk4IC4b1GB0nCZC+LoOL55J8wXzQ/h8AFgz3uUw3l8/fVG9vAxe/YCR8fDodRkWuoUblBY10thZzCxHxv0hSprlKpy4ZILALC8gmMByEgn6SmQmCiAeNWv1lwFlQkghPPUQOqtu5C0gZY6Bdc2JhkMYvwwpDa0CiHWZHp+qM03WXevqRL0T6j1LWC4YTb3PsIotU3YP0DdLmLPjJL64yfzPGUeL87OGyfGwgEAzNvJevsUtyuiXQDCBJPTMg3JamW15L3Fi+fmTcSeSew2siOL7HLgaAD9Ezg1jVMz+n1XRIg1n8qvzgItLuHiMH781wEf+zoXX1kcWlkcWlkcWlkcWlkcWlkcWlkcWlkcWq0XjgSI/AP3P/UL4ashyJrfZ7cAAAAASUVORK5CYII=" alt=""><strong>EC Group</strong></a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>What EC Group does</h1>
+      <p>EC Group stores products for brands, packs every order and delivers it to the customer, then handles the returns. Everything runs in-house from one warehouse in Essex, with delivery across the UK and worldwide.</p>
+    </div>
+    <div class="facts">
+      <div><b id="yrs">216</b><span>years in warehousing and logistics, since 1810</span></div>
+      <div><b>4 acres</b><span>of warehouse space in Essex, UK</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <h2>How an order moves through EC Group</h2>
+    <p class="lede">The core of the business is this cycle, which runs for every order a client's customer places.</p>
+    <div class="journey">
+      <div class="step"><h3>Store</h3><p>Client's stock is received and held in the Essex warehouse.</p></div>
+      <div class="step"><h3>Pick and pack</h3><p>Orders arrive automatically from the online store and are packed.</p></div>
+      <div class="step"><h3>Deliver</h3><p>Parcels ship to customers in the UK and worldwide.</p></div>
+      <div class="step"><h3>Returns</h3><p>Returned items are received, checked and restocked.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Main services</h2>
+    <p class="lede">Seven services, each with its own page on ecgroup.co.uk.</p>
+    <div class="services">
+      <article class="svc" id="svc-3pl"><span class="kind">Outsourced logistics</span><h3>Third Party Logistics (3PL)</h3>
+        <p>The client hands over its whole logistics operation and focuses on selling.</p>
+        <ul><li>Warehousing and storage</li><li>Shipping and distribution</li><li>Supply chain management</li></ul>
+        <a href="https://ecgroup.co.uk/third-party-logistics/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-ecommerce"><span class="kind">Online stores</span><h3>E-commerce Order Fulfilment</h3>
+        <p>Orders flow from the client's store straight into EC Group's system.</p>
+        <ul><li>Inventory storage</li><li>Picking, packing and shipping</li><li>Shopify, WooCommerce, Magento and more</li></ul>
+        <a href="https://ecgroup.co.uk/e-commerce-order-fulfilment/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-subscription"><span class="kind">Recurring orders</span><h3>Subscription Fulfilment</h3>
+        <p>Subscription boxes built and dispatched on schedule, every cycle.</p>
+        <ul><li>Accurate kitting</li><li>Custom branded packaging</li><li>On-time delivery</li></ul>
+        <a href="https://ecgroup.co.uk/subscription-fulfilment/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-kits"><span class="kind">Hand assembly</span><h3>Kit Collation and Pack Assembly</h3>
+        <p>Multi-item packs put together by hand before they ship.</p>
+        <ul><li>Gift sets and gift boxes</li><li>Welcome and membership packs</li><li>Multi-product kits</li></ul>
+        <a href="https://ecgroup.co.uk/kit-collation-and-pack-assembly/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-pos"><span class="kind">Brand materials</span><h3>Marketing and POS Distribution</h3>
+        <p>Campaign and point-of-sale materials sent to stores and locations.</p>
+        <ul><li>Point-of-sale displays</li><li>Leaflets and campaign packs</li><li>Local to worldwide reach</li></ul>
+        <a href="https://ecgroup.co.uk/marketing-pos-distribution/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-returns"><span class="kind">After the sale</span><h3>Returns Management</h3>
+        <p>Customer returns handled end to end so stock gets back on sale.</p>
+        <ul><li>Receiving returned items</li><li>Inspection</li><li>Restocking</li></ul>
+        <a href="https://ecgroup.co.uk/returns-management-service/" target="_blank" rel="noopener">View service page</a></article>
+
+      <article class="svc" id="svc-events"><span class="kind">Live events</span><h3>Event Support Services</h3>
+        <p>Logistics and handling of goods and materials for events.</p>
+        <ul><li>Event materials handling</li><li>Delivery to venues</li><li>On-hand support team</li></ul>
+        <a href="https://ecgroup.co.uk/event-support-services/" target="_blank" rel="noopener">View service page</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="extras">
+  <div class="wrap">
+    <h2>Also included</h2>
+    <p class="lede">Supporting services that sit alongside the main offer.</p>
+    <div class="extras">
+      <div class="extra"><h3>Inventory management</h3><p>Live stock data online, so clients always know what they hold.</p></div>
+      <div class="extra"><h3>Customer service</h3><p>Outsourced customer support to take load off the client's team.</p></div>
+      <div class="extra"><h3>Peak-season scaling</h3><p>Extra capacity for Black Friday, seasonal promotions and launches.</p></div>
+      <div class="extra"><h3>Marketing support</h3><p>Advice from an experienced business and marketing team.</p></div>
+      <div class="extra"><h3>Account manager</h3><p>A dedicated contact for every client.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sectors">
+  <div class="wrap">
+    <h2>Who they work with</h2>
+    <p class="lede">Three sectors, with well-known names in each.</p>
+    <div class="sectors">
+      <div class="sector"><h3>E-commerce</h3><p>Online brands that need fulfilment which grows with them.</p><div class="who"><b>Clients:</b> Decanter, The Folio Society, Escentric Molecules</div></div>
+      <div class="sector"><h3>Charity</h3><p>Not-for-profits sending donor packs, mailings and campaign materials.</p><div class="who"><b>Clients:</b> BookTrust, MS Society, CAFOD</div></div>
+      <div class="sector"><h3>Enterprise</h3><p>Large businesses that need high-capacity, flexible logistics.</p><div class="who"><b>Clients:</b> Rolex, Visit Britain</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="platforms">
+  <div class="wrap">
+    <h2>Platforms they connect with</h2>
+    <p class="lede">Orders import automatically from the client's store. B2B clients also get a secure portal for manual orders, live stock levels and reports.</p>
+    <div class="plat"><span>Shopify</span><span>WooCommerce</span><span>Magento</span><span>BigCommerce</span><span>Linnworks</span><span>Oracle NetSuite</span><span>Bespoke stores</span></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div><h2>Get in touch with EC Group</h2><p>Quotes are tailored to order volume, products and services.</p></div>
+    <div class="btns"><a class="btn" href="https://ecgroup.co.uk/contact/" target="_blank" rel="noopener">Request a quote</a><a class="btn line" href="tel:+441375484555">+44 (0)1375 484555</a></div>
+  </div>
+</section>
+
+<footer><div class="wrap">Summary based on ecgroup.co.uk.</div></footer>
+
+
+<div class="nudge" id="nudge" hidden role="status">Hi! Need help choosing a service? Ask me anything.<button type="button" aria-label="Dismiss" id="nudgeX">×</button></div>
+<button class="launcher" type="button" id="launcher" aria-label="Open the EC Group assistant">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+  Ask us anything
+</button>
+<div class="chat bot" id="chat" hidden role="dialog" aria-label="EC Group assistant">
+  <div class="chat-head">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAIAAAC1eHXNAAAC/0lEQVR4nO2XXUgUURTHz72jT1mUnxBum0tFRBgoWUnmgwa2QWGwL+G+JJIRUkT6oIFaoA9aDwW9WBRhECwRbGBoEmaRUmm0hpmuq6IUix+JWi/u3NODSzV37s7e2ZbwYf7My5w558xvZv6ce4cgIkgIB3zqnXYuqLhdJH9/xJLJaXb7Hi6vyPQn8hyhczW/T2lFmVJRJlPIOrrZAw8GpowgcrOpTC9OSnOdJAQAUGex0lRLHPYoaTFA0KICUyXEYY+KYo5DqSo3C/EH5dJZg4QEfUht4/0Y7rVvD3W79HEcGWPeLvzix6HPxLaVZG2jp0+RnGy+PC+Huk4wj1fcXO/T1bwSYarS2kCPHOQh+t6Hrt2AuQUuLjQyBmdD7vOwuMRDyPuUbLcJIAZ9oQtX9BAAwNra9e+VZKTRwnxhf1kOevyoPhjpC4ZR7j/Cb0G+T+EhYbLgu+CgT5Bnt0HKFg6CGXIAAMnlXQIAEJzDma9cmsCneouJNTYRNQUHBI8kVCxzLHwPfyDm2rhyzH9fFxxkpyOOHAJ/iH26LRNSk7UcWegbjheH7BzTzyX8NBI6c9G4u9JYTTLSNFXBWbW+hYeQn2PsSQdfvHe3UmfEQZ3F9FgRycn++2CdPeJkSQ6YW8DXb/nikyWk4IC4b1GB0nCZC+LoOL55J8wXzQ/h8AFgz3uUw3l8/fVG9vAxe/YCR8fDodRkWuoUblBY10thZzCxHxv0hSprlKpy4ZILALC8gmMByEgn6SmQmCiAeNWv1lwFlQkghPPUQOqtu5C0gZY6Bdc2JhkMYvwwpDa0CiHWZHp+qM03WXevqRL0T6j1LWC4YTb3PsIotU3YP0DdLmLPjJL64yfzPGUeL87OGyfGwgEAzNvJevsUtyuiXQDCBJPTMg3JamW15L3Fi+fmTcSeSew2siOL7HLgaAD9Ezg1jVMz+n1XRIg1n8qvzgItLuHiMH781wEf+zoXX1kcWlkcWlkcWlkcWlkcWlkcWlkcWlkcWq0XjgSI/AP3P/UL4ashyJrfZ7cAAAAASUVORK5CYII=" alt="">
+    <div><strong>EC Group Assistant</strong><small><span class="dot"></span><span id="status">Online, replies instantly</span></small></div>
+    <button class="icon-btn" type="button" id="reset" aria-label="Start a new conversation" title="New conversation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+    <button class="icon-btn" type="button" id="close" aria-label="Close assistant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form class="compose" id="compose">
+    <label for="input" class="sr">Your message</label>
+    <textarea id="input" rows="1" placeholder="Ask about services, pricing, platforms…"></textarea>
+    <button class="send" id="send" type="submit">Send</button>
+  </form>
+  <div class="cfoot">AI assistant. Final quotes come from the EC Group team.</div>
+</div>
+<script>document.getElementById('yrs').textContent=new Date().getFullYear()-1810;</script>
+<script>
+/* ============ EC Group website assistant ============
+   Where the AI replies come from, in order:
+   1. Inside Claude (published artifact): Claude answers via the viewer's account.
+   2. Your own server: set API_URL below to an endpoint that accepts
+      POST {system, messages:[{role,content}]} and returns {text}. Keep the AI key on that server.
+   3. Anywhere else: built-in scripted replies, so the chat always answers. */
+const API_URL = "";
+
+(function(){
+  const YEARS = new Date().getFullYear() - 1810;
+  const $ = id => document.getElementById(id);
+
+  const PAGES = {
+    svc_3pl:{t:'Third Party Logistics',d:'Service page',u:'https://ecgroup.co.uk/third-party-logistics/'},
+    svc_ecommerce:{t:'E-commerce Order Fulfilment',d:'Service page',u:'https://ecgroup.co.uk/e-commerce-order-fulfilment/'},
+    svc_kits:{t:'Kit Collation and Pack Assembly',d:'Service page',u:'https://ecgroup.co.uk/kit-collation-and-pack-assembly/'},
+    svc_subscription:{t:'Subscription Fulfilment',d:'Service page',u:'https://ecgroup.co.uk/subscription-fulfilment/'},
+    svc_pos:{t:'Marketing & POS Distribution',d:'Service page',u:'https://ecgroup.co.uk/marketing-pos-distribution/'},
+    svc_returns:{t:'Returns Management Service',d:'Service page',u:'https://ecgroup.co.uk/returns-management-service/'},
+    svc_events:{t:'Event Support Services',d:'Service page',u:'https://ecgroup.co.uk/event-support-services/'},
+    sector_ecommerce:{t:'E-commerce',d:'Sector page',u:'https://ecgroup.co.uk/ecommerce/'},
+    sector_charity:{t:'Charity',d:'Sector page',u:'https://ecgroup.co.uk/charity/'},
+    sector_enterprise:{t:'Enterprise',d:'Sector page',u:'https://ecgroup.co.uk/enterprise/'},
+    cs_decanter:{t:'Decanter',d:'Case study · wine media',u:'https://ecgroup.co.uk/portfolio/decanter-magazine-case-study/'},
+    cs_folio:{t:'The Folio Society',d:'Case study · publishing',u:'https://ecgroup.co.uk/portfolio/the-folio-society/'},
+    cs_escentric:{t:'Escentric Molecules',d:'Case study · fragrance',u:'https://ecgroup.co.uk/portfolio/escentric-molecules/'},
+    cs_booktrust:{t:'BookTrust',d:'Case study · charity',u:'https://ecgroup.co.uk/portfolio/booktrust/'},
+    integrations:{t:'Platform Integration',d:'About us',u:'https://ecgroup.co.uk/platform-integration/'},
+    why_ec:{t:'Why EC Group?',d:'About us',u:'https://ecgroup.co.uk/why-ec-group/'},
+    people:{t:'Our People',d:'About us',u:'https://ecgroup.co.uk/people/'},
+    careers:{t:'Careers',d:'About us',u:'https://ecgroup.co.uk/careers/'},
+    faqs:{t:'FAQs',d:'Insights',u:'https://ecgroup.co.uk/faqs/'},
+    contact:{t:'Request a quote',d:'Contact page',u:'https://ecgroup.co.uk/contact/'}
+  };
+  const SECTIONS = {how:'How an order moves',services:'Main services','svc-3pl':'Third Party Logistics','svc-ecommerce':'E-commerce Order Fulfilment','svc-subscription':'Subscription Fulfilment','svc-kits':'Kit Collation','svc-pos':'Marketing and POS','svc-returns':'Returns Management','svc-events':'Event Support',extras:'Also included',sectors:'Who they work with',platforms:'Platforms',contact:'Contact'};
+
+  const KB = `EC Group: UK fulfilment and logistics company, founded 1810 as a warehousing and logistics company (${YEARS} years). All work in-house from a 4-acre warehouse in Essex, UK. Delivers UK and worldwide. Phone +44 (0)1375 484555.
+Main services: Third Party Logistics (warehousing, shipping, supply chain); E-commerce Order Fulfilment (storage, pick, pack, ship; orders flow from the store automatically); Subscription Fulfilment (kitting, custom branded packaging, on-time dispatch every cycle); Kit Collation and Pack Assembly (gift sets, welcome packs, multi-item kits by hand); Marketing and POS Distribution (point-of-sale and campaign materials to stores/locations); Returns Management (receive, inspect, restock); Event Support Services (event logistics).
+Also included: inventory management with live stock data online, outsourced customer service, peak-season scaling (Black Friday, promotions, launches), marketing support, dedicated account manager.
+Sectors: e-commerce (clients Decanter, The Folio Society, Escentric Molecules), charity (BookTrust, MS Society, CAFOD), enterprise (Rolex, Visit Britain).
+Platforms: Shopify, WooCommerce, Magento, BigCommerce, Linnworks, Oracle NetSuite, bespoke stores. B2B secure portal: manual orders, live stock, reports. Stock sync frequency set per client.
+Pricing: not published; depends on order volume, number of products, storage and services. Never give or estimate figures.`;
+
+  const RULES = `You are the friendly website assistant on EC Group's services page. Have a natural conversation: help visitors understand what EC Group does, which service fits their business, and how to get a quote. Use ONLY these facts; if something isn't covered, say the EC Group team can confirm it.
+${KB}
+
+PAGE SECTIONS you can take the visitor to: ${Object.entries(SECTIONS).map(([k,v])=>k+' ('+v+')').join(', ')}.
+LINKABLE PAGES (by key): ${Object.entries(PAGES).map(([k,p])=>k+' = '+p.t).join('; ')}.
+
+ACTIONS: at the very END of a reply you may add, each on its own line:
+<<go:SECTION>>  scroll to and highlight a section or service card on this page.
+<<pages:key1,key2>>  show up to 3 link cards to full site pages.
+Use them when helpful, e.g. when explaining a service, go to its card and link its page. Never mention this syntax.
+
+STYLE: reply in the visitor's language (if they write Hinglish, reply in Hinglish). Warm, conversational, 1–3 short sentences, then often one short follow-up question to understand their business (what they sell, platform, order volume). Plain text only, no markdown bold or headings, no URLs. When they're ready for a quote, point them to the contact page and phone number.`;
+
+  const els={chat:$('chat'),msgs:$('msgs'),chips:$('chips'),compose:$('compose'),input:$('input'),send:$('send'),status:$('status'),nudge:$('nudge'),launcher:$('launcher')};
+  const GREETING="Hi! I'm EC Group's assistant. I can explain our services, help you work out which one fits your business, or point you to a quote. What do you sell?";
+  const STARTERS=["Which service is right for me?","Do you work with Shopify?","How much does it cost?","Tell me about subscription boxes"];
+
+  let turns=[], busy=false, ctl=null, sample=null, checked=false, mode='ai', lastTopic=null;
+
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const ACT_RE=/<<\s*(go|pages)\s*:\s*([\s\S]*?)>>/gi;
+  const visible=t=>t.replace(ACT_RE,'').replace(/<<[\s\S]*$/,'').replace(/<\s*$/,'').replace(/\n{3,}/g,'\n\n').trim();
+  function format(text){
+    const clean=esc(text.replace(/\*\*(.+?)\*\*/g,'$1').trim());
+    return clean.split(/\n{2,}/).map(b=>{const l=b.split('\n');
+      if(l.every(x=>/^\s*[-•]\s+/.test(x))) return '<ul>'+l.map(x=>'<li>'+x.replace(/^\s*[-•]\s+/,'')+'</li>').join('')+'</ul>';
+      return '<p>'+l.join('<br>')+'</p>'}).join('');
+  }
+  const scroll=()=>{els.msgs.scrollTop=els.msgs.scrollHeight};
+  function addMsg(who,text,cls=''){const d=document.createElement('div');d.className='msg '+who+(cls?' '+cls:'');d.innerHTML=format(text);els.msgs.appendChild(d);scroll();return d}
+  function addAction(t){const d=document.createElement('div');d.className='action';d.textContent=t;els.msgs.appendChild(d);scroll()}
+  function addCards(keys){
+    const box=document.createElement('div');box.className='cards';
+    keys.filter(k=>PAGES[k]).slice(0,3).forEach(k=>{const p=PAGES[k];const a=document.createElement('a');a.className='card';a.href=p.u;a.target='_blank';a.rel='noopener';
+      a.innerHTML=`<span><strong>${esc(p.t)}</strong><small>${esc(p.d)}</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>`;box.appendChild(a)});
+    if(box.children.length){els.msgs.appendChild(box);scroll()}
+  }
+  function setChips(list){els.chips.innerHTML='';list.forEach(t=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t;b.onclick=()=>submit(t);els.chips.appendChild(b)})}
+  function goTo(id){
+    const el=document.getElementById(id); if(!el) return false;
+    el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:id.startsWith('svc-')?'center':'start'});
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    if(matchMedia('(max-width:560px)').matches) close();
+    return true;
+  }
+  function runActions(t){
+    let m; ACT_RE.lastIndex=0;
+    while((m=ACT_RE.exec(t))){
+      const kind=m[1].toLowerCase(), arg=m[2].trim();
+      if(kind==='go'){const id=arg.toLowerCase().replace(/\s+/g,'-'); if(SECTIONS[id]&&goTo(id)) addAction('Showing '+SECTIONS[id]+' on the page');}
+      else addCards(arg.split(/[\s,]+/).filter(Boolean));
+    }
+  }
+
+  function start(){turns=[];lastTopic=null;els.msgs.innerHTML='';addMsg('b',GREETING);setChips(STARTERS)}
+  function open(){els.nudge.hidden=true;els.chat.hidden=false;els.launcher.hidden=true;if(!els.msgs.children.length)start();setTimeout(()=>els.input.focus(),50);ensure()}
+  function close(){els.chat.hidden=true;els.launcher.hidden=false}
+  els.launcher.onclick=open; $('close').onclick=close;
+  $('reset').onclick=()=>{ctl?.abort();start()};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!els.chat.hidden)close()});
+  els.nudge.addEventListener('click',e=>{if(e.target.id==='nudgeX'){els.nudge.hidden=true;return}open()});
+  setTimeout(()=>{if(els.chat.hidden)els.nudge.hidden=false},5000);
+
+  async function ensure(){
+    if(checked) return; checked=true;
+    if(API_URL){mode='api';return}
+    try{sample=(window.claude&&typeof window.claude.use==='function')?await window.claude.use('sample'):null}catch{sample=null}
+    if(!sample) mode='scripted';
+  }
+
+  async function askAI(onText){
+    const convo=turns.map((t,i)=>i===0?{role:'user',content:RULES+'\n\nVISITOR MESSAGE:\n'+t.content}:t);
+    if(mode==='api'){
+      const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:RULES,messages:turns})});
+      if(!r.ok) throw {code:'upstream_error'};
+      const j=await r.json(); return j.text||'';
+    }
+    ctl=new AbortController();
+    const {text}=await sample(convo,{cache:false,modelTier:'quick',signal:ctl.signal,onText:({text})=>onText(text)});
+    return text;
+  }
+
+  async function submit(text){
+    text=(text||'').trim(); if(!text||busy) return;
+    els.chips.innerHTML=''; addMsg('u',text); turns.push({role:'user',content:text});
+    els.input.value=''; autosize(); busy=true; els.send.disabled=true;
+    const bubble=addMsg('b','Typing…','thinking');
+    await ensure();
+    if(mode==='scripted') return scripted(text,bubble);
+    try{
+      const raw=((await askAI(t=>{const v=visible(t);if(v){bubble.classList.remove('thinking');bubble.innerHTML=format(v);scroll()}}))||'').trim();
+      bubble.classList.remove('thinking'); bubble.innerHTML=format(visible(raw)||"Happy to help. What would you like to know?");
+      runActions(raw); els.msgs.appendChild(bubble); scroll();
+      turns.push({role:'assistant',content:raw});
+      busy=false; els.send.disabled=false;
+    }catch(e){
+      const code=e&&e.code; console.warn('assistant error:',code,e&&e.message);
+      if(code==='cancelled'){bubble.remove();turns.pop();busy=false;els.send.disabled=false;return}
+      if(code==='rate_limited'){bubble.classList.remove('thinking');bubble.innerHTML=format("Too many messages at once. Wait a few seconds, then send again.");turns.pop();busy=false;els.send.disabled=false;return}
+      if(e&&e.text){bubble.classList.remove('thinking');bubble.innerHTML=format(visible(e.text));runActions(e.text);turns.push({role:'assistant',content:e.text});busy=false;els.send.disabled=false;return}
+      if(code!=='upstream_error') mode='scripted';
+      return scripted(text,bubble);
+    }
+  }
+
+  /* ---------- Scripted replies (used when no AI is connected) ---------- */
+  const R=[
+    {k:'greet',re:/^(hi|hello|hey|hii+|namaste|good (morning|afternoon|evening))\b/i,a:"Hello! Happy to help. Are you looking for fulfilment for an online store, a charity, or a larger business?"},
+    {k:'thanks',re:/\b(thanks|thank you|thx|cheers|shukriya|dhanyavad)\b/i,a:"You're welcome! Anything else you'd like to know about our services?"},
+    {k:'bye',re:/\b(bye|goodbye|that's all|thats all)\b/i,a:"Thanks for stopping by. When you're ready, our team can put a quote together for you.",pages:['contact']},
+    {k:'price',re:/price|pricing|cost|how much|rate|charges|kitna|fees?\b|quote/i,a:"Pricing is tailored to your order volume, number of products, storage and services, so there's no fixed price list. Roughly how many orders do you ship a month? Our team can then quote precisely.",go:'contact',pages:['contact']},
+    {k:'which',re:/which service|right for me|recommend|suggest|confused|not sure|best for/i,a:"Happy to help you choose. If you sell online, E-commerce Order Fulfilment is usually the starting point; subscription brands need Subscription Fulfilment; charities often use kit assembly and mailings. What do you sell?",go:'services'},
+    {k:'subscription',re:/subscription|monthly box|boxes?\b/i,a:"Subscription Fulfilment covers kitting every box accurately, custom branded packaging and on-time dispatch each cycle. How many boxes do you send per cycle?",go:'svc-subscription',pages:['svc_subscription','cs_escentric']},
+    {k:'platform',re:/shopify|woo|magento|bigcommerce|netsuite|linnworks|integrat|platform|website se|store connect/i,a:"Yes. We connect with Shopify, WooCommerce, Magento, BigCommerce, Linnworks and Oracle NetSuite, plus bespoke stores, so orders flow to our warehouse automatically. Which platform are you on?",go:'platforms',pages:['integrations']},
+    {k:'ecom',re:/e-?commerce|online (store|shop)|pick|pack|ship|my brand|d2c|dtc|sell online/i,a:"For online stores, E-commerce Order Fulfilment handles storage, picking, packing and shipping, with orders flowing straight from your store. Which platform do you sell on?",go:'svc-ecommerce',pages:['svc_ecommerce']},
+    {k:'3pl',re:/3pl|third.party|outsourc|warehous|storage|store my/i,a:"With Third Party Logistics we take over warehousing, shipping and supply chain from our 4-acre Essex warehouse, so you can focus on selling. What kind of products would you store with us?",go:'svc-3pl',pages:['svc_3pl']},
+    {k:'kits',re:/kit|gift set|gift box|welcome pack|assembl|hamper/i,a:"Kit Collation and Pack Assembly is for multi-item packs built by hand, like gift sets and welcome packs. Escentric Molecules' gift boxes are a good example.",go:'svc-kits',pages:['svc_kits','cs_escentric']},
+    {k:'pos',re:/pos\b|point of sale|marketing material|leaflet|display|campaign/i,a:"Marketing and POS Distribution gets your displays, leaflets and campaign packs to stores and locations, from local to worldwide.",go:'svc-pos',pages:['svc_pos']},
+    {k:'returns',re:/return|refund|exchange/i,a:"Returns Management covers receiving returned items, inspecting them and restocking, so good stock gets back on sale quickly.",go:'svc-returns',pages:['svc_returns']},
+    {k:'events',re:/event|exhibition|conference|venue/i,a:"Event Support Services handle the logistics of goods and materials for events. Tell me a little about your event and I'll point you in the right direction.",go:'svc-events',pages:['svc_events']},
+    {k:'charity',re:/charit|not.for.profit|nonprofit|ngo|donor/i,a:"Charities are one of our core sectors. We work with BookTrust, MS Society and CAFOD on donor packs, mailings and campaign materials. What would you need to send out?",go:'sectors',pages:['sector_charity','cs_booktrust']},
+    {k:'enterprise',re:/enterprise|large business|corporate|big company/i,a:"For enterprises we provide high-capacity logistics that flexes with changing demand. Clients include Rolex and Visit Britain.",go:'sectors',pages:['sector_enterprise']},
+    {k:'peak',re:/black friday|peak|christmas|season|launch|spike/i,a:"We scale up for peaks like Black Friday, seasonal promotions and product launches. When is your busiest period?",go:'extras'},
+    {k:'intl',re:/international|worldwide|abroad|overseas|export|global|europe|usa/i,a:"Yes, we deliver across the UK and worldwide from our Essex warehouse."},
+    {k:'where',re:/where|location|based|address|essex/i,a:"We're based in Essex, UK, where everything runs in-house from our 4-acre warehouse."},
+    {k:'history',re:/history|how old|since|1810|experience|about (you|ec)/i,a:`EC Group started in 1810 as a warehousing and logistics company, so we have ${YEARS} years of experience.`,pages:['why_ec']},
+    {k:'clients',re:/client|case stud|example|who do you work|portfolio/i,a:"Our clients include Decanter, The Folio Society, Escentric Molecules and BookTrust. Here are a few case studies.",go:'sectors',pages:['cs_decanter','cs_folio','cs_booktrust']},
+    {k:'stock',re:/stock|inventory|track|portal|report/i,a:"You get live stock data online, and B2B clients get a secure portal for manual orders, stock levels and reports.",go:'extras',pages:['integrations']},
+    {k:'cs',re:/customer service|support team|helpdesk/i,a:"We can also take on your customer service, so your team has less to handle.",go:'extras'},
+    {k:'contact',re:/contact|call|phone|speak|talk to|human|person|email/i,a:"You can call the team on +44 (0)1375 484555, or request a quote online and an account manager will get back to you.",go:'contact',pages:['contact']},
+    {k:'jobs',re:/job|career|hiring|vacanc|work for/i,a:"Here's our careers page.",pages:['careers']},
+    {k:'what',re:/what (do|does) (you|ec)|services|kya kart|offer/i,a:"We store products, pack every order and deliver it to your customers, then handle returns. Our main services are 3PL, e-commerce fulfilment, subscription boxes, kit assembly, POS distribution, returns and event support. What do you sell?",go:'services'}
+  ];
+  const FOLLOW={ // answers to "how many / which platform" style replies
+    volume:/\b\d[\d,.]*\s*(k\b|orders?|parcels?|boxes?|per|a month|monthly|\/month)?/i
+  };
+  function scripted(text,bubble){
+    setTimeout(()=>{
+      let hit=R.find(r=>r.re.test(text)), reply;
+      if(!hit && FOLLOW.volume.test(text) && lastTopic){ reply="Thanks, that helps. With that, our team can put together a tailored quote for you."; hit={pages:['contact']}; }
+      else if(!hit){ reply="Good question. The EC Group team can confirm that for you. Meanwhile, are you looking for help with online orders, subscription boxes, or storage and distribution?"; }
+      else { reply=hit.a; lastTopic=hit.k; }
+      bubble.classList.remove('thinking'); bubble.innerHTML=format(reply);
+      if(hit&&hit.go&&goTo(hit.go)) addAction('Showing '+SECTIONS[hit.go]+' on the page');
+      if(hit&&hit.pages) addCards(hit.pages);
+      els.msgs.appendChild(bubble); scroll();
+      turns.push({role:'assistant',content:reply}); busy=false; els.send.disabled=false;
+    },550);
+  }
+
+  els.compose.addEventListener('submit',e=>{e.preventDefault();submit(els.input.value)});
+  els.input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submit(els.input.value)}});
+  function autosize(){els.input.style.height='44px';els.input.style.height=Math.min(els.input.scrollHeight,120)+'px'}
+  els.input.addEventListener('input',autosize);
+})();
+</script>
+
+</body>
+</html>
